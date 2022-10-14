@@ -1,22 +1,25 @@
 blueprint:
-  name: Selective motion-activated Light
-  description: Turn on a light when motion is detected and need for light is indicated.
+  name: Selective motion-activated light
+  description: Turn on a light when motion is detected and need for light is indicated. Based on the default Home Assistant blueprint 'motion_light.yaml'
+  source_url: https://github.com/m0wlheld/homeassistant/blob/main/config/blueprints/automation/m0wlheld/selective_motion_light.yaml
   domain: automation
   input:
     motion_entity:
       name: Motion Sensor
+      description: Sensor (or sensor group) reporting motion.
       selector:
         entity:
           domain: binary_sensor
           device_class: motion
     indicator_entity:
       name: Light required indicator
-      description: Indicates that motion light is actually required, e.g. at darkness
+      description: Indicator that light is actually required. Must be "on" for light to be turned on when motion.
       selector:
         entity:
           domain: input_boolean
     light_target:
       name: Light
+      description: Light (or light group) to be controlled by the automation.
       selector:
         target:
           entity:
@@ -42,6 +45,9 @@ trigger:
   from: "off"
   to: "on"
 
+# Light will only be turned on when motion, if light requirement is
+# indicated. Will be turned of after motion ended with configured
+# delay anyhow.
 action:
   - if:
       - condition: state
