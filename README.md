@@ -11,6 +11,10 @@ Configuration and other files to create a new Home Assistant installation, using
 1. Use `docker compose config` to validate the compose file and variable substitution
 1. Use `docker compose up -d` to start the stack
 1. After some time, open a browser and point it to http://<hostname or -ip>:80/ to open Home Assistant UI and start onboarding
+1. at the last step of the onboarding dialog, click on the MQTT symbol to configure the connection to mosquitto ([screenshot](./onboarding-summary.png))
+1. in the modal subdialog, simply enter `mosquitto` as MQTT server name and submit ([screenshot](./mqtt-config-dialog.png))
+
+
 
 ### Configuration
 
