@@ -1,0 +1,3 @@
+.env
+homeassistant-data/secret.yaml
+zigbee2mqtt-data/secret.yaml
