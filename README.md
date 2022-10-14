@@ -6,15 +6,13 @@ Configuration and other files to create a new Home Assistant installation, using
 
 ## Usage
 
-1. Clone this repository to a suitable machine and change into the created directory `homeassistant`.
-1. Create an `.env` file in that directory with the environment variable names and values specified below
+1. Clone this repository to a suitable machine and change into the created directory (`homeassistant-zigbee2mqtt`)
+1. Create an `.env` file in that directory with the required environment variable names and values (see below)
 1. Use `docker compose config` to validate the compose file and variable substitution
 1. Use `docker compose up -d` to start the stack
 1. After some time, open a browser and point it to http://<hostname or -ip>:80/ to open Home Assistant UI and start onboarding
 1. at the last step of the onboarding dialog, click on the MQTT symbol to configure the connection to mosquitto ([screenshot](./onboarding-summary.png))
 1. in the modal subdialog, simply enter `mosquitto` as MQTT server name and submit ([screenshot](./mqtt-config-dialog.png))
-
-
 
 ### Configuration
 
