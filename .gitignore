@@ -1,4 +1,9 @@
 .env
+homeassistant-data/.HA_VERSION
+homeassistant-data/.storage/
+homeassistant-data/blueprints/*/homeassistant
+homeassistant-data/home-assistant.log*
+homeassistant-data/home-assistant_v2.db
 homeassistant-data/secrets.yaml
-zigbee2mqtt-data/secrets.yaml
 mosquitto-data/*
+zigbee2mqtt-data/*
