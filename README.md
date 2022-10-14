@@ -20,6 +20,10 @@ Configuration and other files to create a new Home Assistant installation, using
 
 The stack requires configuration by environment variables. Easiest solution is to create a file named `.env` next to the docker compose file. See Docker's [documentation](https://docs.docker.com/compose/environment-variables/#the-env-file) on .env-files for details.
 
+You may use the provided script `env.sh` to gather the required information in a usable format. The following command will create (overwrite) the `.env` file from the gathered information:
+
+    sh ./env.sh >> .env
+
 Either way the following environment variables must be defined:
 
 | Name                                    | Purpose | Example |
