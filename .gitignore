@@ -1,3 +1,4 @@
 .env
-homeassistant-data/secret.yaml
-zigbee2mqtt-data/secret.yaml
+homeassistant-data/secrets.yaml
+zigbee2mqtt-data/secrets.yaml
+mosquitto-data/*
