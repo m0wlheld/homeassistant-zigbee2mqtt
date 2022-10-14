@@ -1,0 +1,49 @@
+# Software stack for Home Assistant and Zigbee2MQTT. Requires and .env file with
+# variables defined:
+# SERIAL_DEVICE: path to Zigbee dongle, use path from /dev/serial/by-id/
+# TZ: timezone (like Europe/Berlin)
+# ZIGBEE2MQTT_CONFIG_ADVANCED_NETWORK_KEY: array of 16 bytes as decimal values (0-255), e.g. [ 1, 3, 5, 7, 9, 11, 13, 15, 0, 2, 4, 6, 8, 10, 12, 13 ]
+#
+services:
+  homeassistant:
+    container_name: homeassistant
+    environment:
+      - TZ
+    image: homeassistant/home-assistant:2022.10
+    ports:
+      - "80:8123"
+    restart: unless-stopped
+    volumes:
+      - "./homeassistant-data:/config"
+  mosquitto:
+    command: "mosquitto -c /mosquitto-no-auth.conf"
+    container_name: mosquitto
+    environment:
+      - TZ
+    image: eclipse-mosquitto:2.0.15
+    expose:
+      - 1883
+      - 9001
+    restart: unless-stopped
+    volumes:
+      - "./mosquitto-data:/mosquitto"
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    depends_on:
+      - mosquitto
+    devices:
+      - ${SERIAL_DEVICE}:/dev/ttyACM0
+    environment:
+      - TZ
+      - ZIGBEE2MQTT_CONFIG_ADVANCED_CHANNEL=15
+      - ZIGBEE2MQTT_CONFIG_ADVANCED_NETWORK_KEY
+      - ZIGBEE2MQTT_CONFIG_HOMEASSISTANT=true
+      - ZIGBEE2MQTT_CONFIG_MQTT_SERVER=mqtt://mosquitto
+      - ZIGBEE2MQTT_CONFIG_PERMIT_JOIN=false
+    image: koenkk/zigbee2mqtt:1.28.0
+    restart: unless-stopped
+    volumes:
+      - "./zigbee2mqtt-data:/app/data"
+      - "/run/udev:/run/udev:ro"
+
+version: '3.0'
