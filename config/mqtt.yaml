@@ -1,0 +1,11 @@
+#
+# Permit Join for Zigbee2MQTT 
+#
+switch:
+  - name: "Zigbee2MQTT Main join"
+    unique_id: zigbee2mqtt_main_join_switch
+    state_topic: "zigbee2mqtt/bridge/info"
+    value_template: '{{ value_json.permit_join | lower }}'
+    command_topic: "zigbee2mqtt/bridge/request/permit_join"
+    payload_on: "true"
+    payload_off: "false"
