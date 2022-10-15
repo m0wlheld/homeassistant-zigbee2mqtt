@@ -12,7 +12,7 @@ services:
     image: homeassistant/home-assistant:2022.10
     ports:
       - "80:8123"
-    restart: unless-stopped
+    restart: always
     volumes:
       - "./homeassistant-data:/config"
   mosquitto:
@@ -24,7 +24,7 @@ services:
     expose:
       - 1883
       - 9001
-    restart: unless-stopped
+    restart: always
     volumes:
       - "./mosquitto-data:/mosquitto"
   zigbee2mqtt:
@@ -41,7 +41,7 @@ services:
       - ZIGBEE2MQTT_CONFIG_MQTT_SERVER=mqtt://mosquitto
       - ZIGBEE2MQTT_CONFIG_PERMIT_JOIN=false
     image: koenkk/zigbee2mqtt:1.28.0
-    restart: unless-stopped
+    restart: always
     volumes:
       - "./zigbee2mqtt-data:/app/data"
       - "/run/udev:/run/udev:ro"
