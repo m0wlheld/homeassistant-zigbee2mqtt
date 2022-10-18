@@ -34,6 +34,7 @@ services:
       - "./mosquitto-data:/mosquitto"
   watchtower:
     command: 
+      - --cleanup
       - homeassistant
       - mosquitto
     container_name: watchtower
