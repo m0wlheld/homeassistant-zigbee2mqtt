@@ -20,7 +20,7 @@ services:
     container_name: mosquitto
     environment:
       - TZ
-    image: eclipse-mosquitto:2.0.15
+    image: eclipse-mosquitto:2.0
     expose:
       - 1883
       - 9001
@@ -28,7 +28,9 @@ services:
     volumes:
       - "./mosquitto-data:/mosquitto"
   watchtower:
-    command: ["homeassistant"]
+    command: 
+      - homeassistant
+      - mosquitto
     container_name: watchtower
     environment:
       - TZ
