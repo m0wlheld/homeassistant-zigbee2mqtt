@@ -9,6 +9,11 @@ services:
     container_name: homeassistant
     environment:
       - TZ
+    healthcheck:
+      test: "curl --connect-timeout 10 --silent -f http://127.0.0.1:8123/ || exit 1"
+      interval: 120s
+      timeout: 30s
+      retries: 3      
     image: homeassistant/home-assistant:2022.10
     ports:
       - "80:8123"
