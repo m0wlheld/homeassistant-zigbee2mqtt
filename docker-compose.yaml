@@ -27,6 +27,14 @@ services:
     restart: always
     volumes:
       - "./mosquitto-data:/mosquitto"
+  watchtower:
+    command: ["homeassistant"]
+    container_name: watchtower
+    environment:
+      - TZ
+    image: containrrr/watchtower
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
   zigbee2mqtt:
     container_name: zigbee2mqtt
     depends_on:
