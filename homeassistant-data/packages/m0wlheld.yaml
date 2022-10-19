@@ -7,7 +7,7 @@ automation:
     offset: -00:30:00
   - platform: sun
     event: sunset
-    offset: +00:30:00
+    offset: +00:15:00
     id: sunset
   condition: []
   action:
