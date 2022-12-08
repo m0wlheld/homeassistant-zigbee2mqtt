@@ -14,7 +14,7 @@ services:
       interval: 120s
       timeout: 30s
       retries: 3      
-    image: homeassistant/home-assistant:2022.11
+    image: homeassistant/home-assistant:2022.12
     ports:
       - "80:8123"
     restart: always
