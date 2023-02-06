@@ -57,10 +57,10 @@ services:
       - ZIGBEE2MQTT_CONFIG_HOMEASSISTANT=true
       - ZIGBEE2MQTT_CONFIG_MQTT_SERVER=mqtt://mosquitto
       - ZIGBEE2MQTT_CONFIG_PERMIT_JOIN=false
-    image: "koenkk/zigbee2mqtt:1.30.0"
+    image: "koenkk/zigbee2mqtt:1.30.1"
+    ports:
+      - "8080:8080"
     restart: always
     volumes:
       - "./zigbee2mqtt-data:/app/data"
       - "/run/udev:/run/udev:ro"
-
-version: '3.0'
