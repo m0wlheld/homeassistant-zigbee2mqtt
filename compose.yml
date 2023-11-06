@@ -14,7 +14,7 @@ services:
       interval: 120s
       timeout: 30s
       retries: 3      
-    image: "ghcr.io/home-assistant/home-assistant:2023.10"
+    image: "ghcr.io/home-assistant/home-assistant:2023.11"
     ports:
       - "80:8123"
     restart: always
@@ -57,7 +57,7 @@ services:
       - ZIGBEE2MQTT_CONFIG_HOMEASSISTANT=true
       - ZIGBEE2MQTT_CONFIG_MQTT_SERVER=mqtt://mosquitto
       - ZIGBEE2MQTT_CONFIG_PERMIT_JOIN=false
-    image: "koenkk/zigbee2mqtt:1.33.1"
+    image: "koenkk/zigbee2mqtt:1.33.2"
     ports:
       - "8080:8080"
     restart: always
