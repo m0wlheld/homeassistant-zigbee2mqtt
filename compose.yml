@@ -40,7 +40,7 @@ services:
     container_name: watchtower
     environment:
       - TZ
-    image: containrrr/watchtower
+    image: containrrr/watchtower:1.7.1
     restart: always
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
