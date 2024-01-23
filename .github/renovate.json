@@ -1,3 +1,9 @@
 {
-  "extends": [ "config:recommended" ]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+  "rangeStrategy": "pin",
+  "ignorePaths": ["examples/**"],
+  "packageRules": [{
+    "matchUpdateTypes": [ "minor", "patch"],
+    "automerge": true
+  }]
 }
