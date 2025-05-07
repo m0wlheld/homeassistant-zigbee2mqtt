@@ -14,7 +14,7 @@ services:
       interval: 120s
       timeout: 30s
       retries: 3      
-    image: "ghcr.io/home-assistant/home-assistant:2025.4"
+    image: "ghcr.io/home-assistant/home-assistant:2025.5"
     ports:
       - "80:8123"
     restart: always
